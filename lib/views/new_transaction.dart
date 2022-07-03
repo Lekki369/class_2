@@ -2,13 +2,20 @@
 
 import 'package:flutter/material.dart';
 
-class NewTransaction extends StatelessWidget {
+class NewTransaction extends StatefulWidget {
   final Function call;
-  NewTransaction({
+  const NewTransaction({
     required this.call,
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<NewTransaction> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
   final inputTitle = TextEditingController();
+
   final inputAmount = TextEditingController();
 
   void submitted() {
@@ -18,7 +25,7 @@ class NewTransaction extends StatelessWidget {
     if (enteredData.isEmpty && enteredDataAmount < 0) {
       return;
     }
-    call(
+    widget.call(
       enteredData,
       enteredDataAmount,
     );
