@@ -29,6 +29,7 @@ class _NewTransactionState extends State<NewTransaction> {
       enteredDataTitle,
       enteredDataAmount,
     );
+    Navigator.pop(context);
   }
 
   @override
@@ -50,7 +51,9 @@ class _NewTransactionState extends State<NewTransaction> {
           child: TextField(
             decoration: const InputDecoration(labelText: 'Amount'),
             keyboardType: TextInputType.number,
-            onSubmitted: (_) => submitted(),
+            onSubmitted: (_) {
+              submitted();
+            },
             controller: inputAmount,
           ),
         ),

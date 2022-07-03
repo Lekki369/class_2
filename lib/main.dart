@@ -83,7 +83,9 @@ class _MyAppState extends State<MyApp> {
         context: ctx,
         builder: (_) {
           return GestureDetector(
-              onTap: null,
+              onTap: () {
+                Navigator.pop(ctx);
+              },
               behavior: HitTestBehavior.opaque,
               child: NewTransaction(call: _addNewTransacton));
         });
