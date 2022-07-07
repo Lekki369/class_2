@@ -36,7 +36,7 @@ class _NewTransactionState extends State<NewTransaction> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      color: Colors.white70,
+      //   color: Colors.white70,
       child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
@@ -59,7 +59,7 @@ class _NewTransactionState extends State<NewTransaction> {
         ),
         FlatButton(
           onPressed: submitted,
-          textColor: Colors.green[700],
+          // textColor: Colors.green[700],
           child: const Text(
             'Add Transaction',
           ),

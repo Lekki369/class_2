@@ -1,12 +1,13 @@
 // ignore_for_file: use_key_in_widget_constructors, avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use
 
-import 'package:class_2/views/transaction_list.dart';
+import '../views/transaction_list.dart';
 
 import '../views/new_transaction.dart';
 
 import 'package:flutter/material.dart';
 
 import 'models/transaction.dart';
+import 'views/chart.dart';
 
 void main() {
   runApp(
@@ -64,6 +65,13 @@ class _MyAppState extends State<MyApp> {
       title: 'Shoes',
     )
   ];
+  List<Transaction> get _recentTransaction {
+    final tras = _transactions.where((transction) {
+      return transction.date
+          .isAfter(DateTime.now().subtract(Duration(days: 7)));
+    });
+    return tras.toList();
+  }
 
   void _addNewTransacton(String title, double amount) {
     final newTx = Transaction(
@@ -94,6 +102,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+          primarySwatch: Colors.deepOrange, accentColor: Colors.amber),
       home: Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton(
@@ -106,13 +116,8 @@ class _MyAppState extends State<MyApp> {
         body: SingleChildScrollView(
           //   keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Column(children: [
-            SizedBox(
-              width: double.infinity,
-              child: Card(
-                color: Colors.amberAccent,
-                elevation: 2,
-                child: Text('CHART'),
-              ),
+            Chart(
+              recentTransaction: _recentTransaction,
             ),
             TransactionList(transaction: _transactions)
           ]),
