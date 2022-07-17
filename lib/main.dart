@@ -12,6 +12,7 @@ import 'views/chart.dart';
 void main() {
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyApp(),
     ),
   );
@@ -75,12 +76,22 @@ class _MyAppState extends State<MyApp> {
         ),
         body: SingleChildScrollView(
           //   keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          child: Column(children: [
-            Chart(
-              recentTransaction: _recentTransaction,
-            ),
-            TransactionList(transaction: _transactions)
-          ]),
+          child: _transactions.isEmpty
+              ? Padding(
+                  padding: const EdgeInsets.only(top: 160.0),
+                  child: Center(
+                    child: Image(
+                      image: AssetImage(
+                          'asset/—Pngtree—banking service concept in 3d_7601736.png'),
+                    ),
+                  ),
+                )
+              : Column(children: [
+                  Chart(
+                    recentTransaction: _recentTransaction,
+                  ),
+                  TransactionList(transaction: _transactions)
+                ]),
         ),
       ),
     );
