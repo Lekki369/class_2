@@ -11,7 +11,9 @@ import 'views/chart.dart';
 
 void main() {
   runApp(
-    MaterialApp(home: MyApp()),
+    MaterialApp(
+      home: MyApp(),
+    ),
   );
 }
 
@@ -21,50 +23,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final List<Transaction> _transactions = [
-    Transaction(
-      amount: 20.0,
-      date: DateTime.now(),
-      id: 'a1',
-      title: 'Shoes',
-    ),
-    Transaction(
-      amount: 20.0,
-      date: DateTime.now(),
-      id: 'a1',
-      title: 'Clothe',
-    ),
-    Transaction(
-      amount: 20.0,
-      date: DateTime.now(),
-      id: 'a1',
-      title: 'Drinks',
-    ),
-    Transaction(
-      amount: 20.0,
-      date: DateTime.now(),
-      id: 'a1',
-      title: 'Shoes',
-    ),
-    Transaction(
-      amount: 20.0,
-      date: DateTime.now(),
-      id: 'a1',
-      title: 'Shoes',
-    ),
-    Transaction(
-      amount: 20.0,
-      date: DateTime.now(),
-      id: 'a1',
-      title: 'Shoes',
-    ),
-    Transaction(
-      amount: 20.0,
-      date: DateTime.now(),
-      id: 'a1',
-      title: 'Shoes',
-    )
-  ];
+  final List<Transaction> _transactions = [];
   List<Transaction> get _recentTransaction {
     final tras = _transactions.where((transction) {
       return transction.date
@@ -91,9 +50,6 @@ class _MyAppState extends State<MyApp> {
         context: ctx,
         builder: (_) {
           return GestureDetector(
-              onTap: () {
-                Navigator.pop(ctx);
-              },
               behavior: HitTestBehavior.opaque,
               child: NewTransaction(call: _addNewTransacton));
         });
@@ -102,8 +58,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primarySwatch: Colors.deepOrange, accentColor: Colors.amber),
+        brightness: Brightness.dark,
+        primarySwatch: Colors.deepOrange,
+        accentColor: Colors.amber,
+      ),
       home: Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton(

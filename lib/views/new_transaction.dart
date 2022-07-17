@@ -41,9 +41,13 @@ class _NewTransactionState extends State<NewTransaction> {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
           child: TextField(
-            decoration: const InputDecoration(labelText: 'Title'),
+            keyboardType: TextInputType.name,
+            decoration: const InputDecoration(
+              labelText: 'Title',
+            ),
             onSubmitted: (_) => submitted(),
             controller: inputTitle,
+            textInputAction: TextInputAction.next,
           ),
         ),
         Padding(
@@ -55,6 +59,7 @@ class _NewTransactionState extends State<NewTransaction> {
               submitted();
             },
             controller: inputAmount,
+            textInputAction: TextInputAction.done,
           ),
         ),
         FlatButton(
