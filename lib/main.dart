@@ -33,10 +33,10 @@ class _MyAppState extends State<MyApp> {
     return tras.toList();
   }
 
-  void _addNewTransacton(String title, double amount) {
+  void _addNewTransacton(String title, double amount, DateTime chosenDate) {
     final newTx = Transaction(
       amount: amount,
-      date: DateTime.now(),
+      date: chosenDate,
       id: 'id',
       title: title,
     );
@@ -62,8 +62,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        primarySwatch: Colors.deepOrange,
-        accentColor: Colors.amber,
+        //  primaryColor: Colors.black12,
       ),
       home: Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

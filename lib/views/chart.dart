@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:class_2/views/chart_bar.dart';
 
 import '../models/transaction.dart';
@@ -8,7 +6,7 @@ import 'package:intl/intl.dart';
 
 class Chart extends StatelessWidget {
   final List<Transaction> recentTransaction;
-  Chart({
+  const Chart({
     required this.recentTransaction,
     Key? key,
   }) : super(key: key);
@@ -44,7 +42,7 @@ class Chart extends StatelessWidget {
     // print(groupedTransaction);
     return Card(
         elevation: 6,
-        margin: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(

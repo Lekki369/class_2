@@ -28,10 +28,10 @@ class TransactionList extends StatelessWidget {
                 padding: const EdgeInsets.all(5),
                 child: Text(
                   '\$${transaction[count].amount.toStringAsFixed(2)}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.w900,
                     fontSize: 20,
-                    color: Theme.of(context).primaryColor,
+                    color: Colors.white,
                   ),
                 ),
               ),
