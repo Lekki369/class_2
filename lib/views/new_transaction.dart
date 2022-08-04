@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use, prefer_const_constructors
+// ignore_for_file: deprecated_member_use, prefer_const_constructors, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -27,11 +27,13 @@ class _NewTransactionState extends State<NewTransaction> {
       firstDate: DateTime(2022),
       lastDate: DateTime.now(),
     ).then(
-      (pickedDate) => {
-        if (pickedDate == null) {},
+      (pickedDate) {
+        if (pickedDate == null) {
+          return;
+        }
         setState(() {
           _selectededDate = pickedDate;
-        })
+        });
       },
     );
   }
@@ -43,8 +45,8 @@ class _NewTransactionState extends State<NewTransaction> {
     final enteredDataTitle = _inputTitle.text;
     final enteredDataAmount = double.parse(_inputAmount.text);
 
-    if (enteredDataTitle.isEmpty &&
-        enteredDataAmount < 0 &&
+    if (enteredDataTitle.isEmpty ||
+        enteredDataAmount < 0 ||
         _selectededDate == null) {
       return;
     }

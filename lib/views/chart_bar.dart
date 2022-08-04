@@ -39,8 +39,10 @@ class ChartBar extends StatelessWidget {
               FractionallySizedBox(
                 heightFactor: spendingPctOfTotal,
                 child: Container(
-                  decoration:
-                      BoxDecoration(color: Theme.of(context).primaryColor),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Theme.of(context).primaryColor,
+                  ),
                 ),
               ),
             ],

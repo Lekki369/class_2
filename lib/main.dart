@@ -23,6 +23,8 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
+int idCount = 0;
+
 class _MyAppState extends State<MyApp> {
   final List<Transaction> _transactions = [];
   List<Transaction> get _recentTransaction {
@@ -37,12 +39,22 @@ class _MyAppState extends State<MyApp> {
     final newTx = Transaction(
       amount: amount,
       date: chosenDate,
-      id: 'id',
+      id: (idCount++).toString(),
       title: title,
     );
 
     setState(() {
       _transactions.add(newTx);
+    });
+  }
+
+  void _removeTransaction(String id) {
+    setState(() {
+      idCount--;
+
+      _transactions.removeWhere((tx) {
+        return tx.id == id;
+      });
     });
   }
 
@@ -89,7 +101,9 @@ class _MyAppState extends State<MyApp> {
                   Chart(
                     recentTransaction: _recentTransaction,
                   ),
-                  TransactionList(transaction: _transactions)
+                  TransactionList(
+                      transaction: _transactions,
+                      removeTransaction: _removeTransaction)
                 ]),
         ),
       ),

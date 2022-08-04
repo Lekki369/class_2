@@ -5,8 +5,10 @@ import '../models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transaction;
+  final Function removeTransaction;
   const TransactionList({
     required this.transaction,
+    required this.removeTransaction,
     Key? key,
   }) : super(key: key);
 
@@ -50,7 +52,17 @@ class TransactionList extends StatelessWidget {
                       fontSize: 15,
                       color: Theme.of(context).primaryColorLight),
                 ),
-              ])
+              ]),
+              const Spacer(flex: 2),
+              IconButton(
+                onPressed: () {
+                  removeTransaction(transaction[count].id);
+                },
+                icon: Icon(
+                  Icons.delete,
+                  color: Theme.of(context).errorColor,
+                ),
+              )
             ]),
           );
         },
